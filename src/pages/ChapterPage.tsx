@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import { ArrowLeft, ArrowRight, Check, Trophy } from 'lucide-react';
 import Nav from '../components/Nav';
 import { chapters } from '../data/tutorials';
 
@@ -36,8 +37,9 @@ function ChapterPage({ completedSlugs, toggleComplete }: ChapterPageProps) {
             <div className="min-h-screen bg-echo-bg text-white">
                   <Nav logoText="Echo Design Labs" />
                   <main className="max-w-4xl mx-auto px-6 py-20">
-                        <Link to="/tutorials" className="text-echo-accent hover:underline text-sm mb-8 inline-block">
-                              ← All tutorials
+                        <Link to="/tutorials" className="text-echo-accent hover:underline text-sm mb-8 inline-flex items-center gap-1">
+                              <ArrowLeft size={16} />
+                              All tutorials
                         </Link>
 
                         <div className="text-sm text-echo-accent font-medium mb-2">
@@ -55,11 +57,20 @@ function ChapterPage({ completedSlugs, toggleComplete }: ChapterPageProps) {
                                     <button
                                           onClick={() => toggleComplete(chapter.slug)}
                                           className={`px-6 py-3 rounded-lg font-medium transition-colors ${isComplete
-                                                      ? 'bg-green-500 hover:bg-green-400 text-black'
-                                                      : 'bg-echo-accent hover:bg-sky-300 text-black'
+                                                ? 'bg-green-500 hover:bg-green-400 text-black'
+                                                : 'bg-echo-accent hover:bg-sky-300 text-black'
                                                 }`}
                                     >
-                                          {isComplete ? '✓ Completed' : 'Mark as complete'}
+                                          {isComplete ? (
+                                                <span className="inline-flex items-center gap-2">
+                                                      <Check size={16} />
+                                                      Completed
+                                                </span>
+                                          ) : (
+                                                <span className="inline-flex items-center gap-2">
+                                                      Mark as complete
+                                                </span>
+                                          )}
                                     </button>
                               </div>
 
@@ -70,7 +81,10 @@ function ChapterPage({ completedSlugs, toggleComplete }: ChapterPageProps) {
                                                 className="text-white/60 hover:text-white transition-colors"
                                           >
                                                 <div className="text-xs text-white/40 mb-1">Previous</div>
-                                                ← {prevChapter.title}
+                                                <span className="inline-flex items-center gap-2">
+                                                      <ArrowLeft size={16} />
+                                                      {prevChapter.title}
+                                                </span>
                                           </Link>
                                     ) : (
                                           <div />
@@ -82,11 +96,19 @@ function ChapterPage({ completedSlugs, toggleComplete }: ChapterPageProps) {
                                                 className="text-right text-white hover:text-echo-accent transition-colors"
                                           >
                                                 <div className="text-xs text-white/40 mb-1">Next</div>
-                                                {nextChapter.title} →
+                                                <span className="inline-flex items-center gap-2 justify-end">
+                                                      {nextChapter.title}
+                                                      <ArrowRight size={16} />
+                                                </span>
                                           </Link>
+                                    ) : isComplete ? (
+                                          <div className="inline-flex items-center gap-2 text-right text-echo-accent font-semibold">
+                                                <Trophy size={20} />
+                                                You finished the course!
+                                          </div>
                                     ) : (
-                                          <div className="text-right text-echo-accent font-semibold">
-                                                🎉 You finished the course!
+                                          <div className="text-right text-white/40 text-sm italic">
+                                                Complete this chapter to finish the course
                                           </div>
                                     )}
                               </div>
