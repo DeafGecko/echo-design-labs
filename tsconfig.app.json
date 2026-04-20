@@ -21,5 +21,5 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "_parked/BentoCard.tsx", "_parked/LabProvider.tsx", "_parked/useSanitize.ts", "_parked/security.ts", "_parked/schema.ts", "_parked/env.ts"]
+  "include": ["src", "_parked/BentoCard.tsx", "_parked/LabProvider.tsx", "_parked/useSanitize.ts", "_parked/security.ts", "_parked/schema.ts", "_parked/env.ts", "edit.tsx"]
 }
