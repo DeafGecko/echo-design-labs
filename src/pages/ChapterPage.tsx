@@ -3,10 +3,14 @@ import { useParams, Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import { chapters } from '../data/tutorials';
 
-function ChapterPage() {
+interface ChapterPageProps {
+      completedSlugs: Set<string>;
+      toggleComplete: (slug: string) => void;
+}
+
+function ChapterPage({ completedSlugs, toggleComplete }: ChapterPageProps) {
       const { slug } = useParams<{ slug: string }>();
       const chapter = chapters.find((c) => c.slug === slug);
-      const [isComplete, setIsComplete] = useState(false);     
 
       if (!chapter) {
             return (
@@ -24,6 +28,8 @@ function ChapterPage() {
                   </div>
             );
       }
+
+      const isComplete = completedSlugs.has(chapter.slug);
 
       return (
             <div className="min-h-screen bg-echo-bg text-white">
@@ -43,12 +49,11 @@ function ChapterPage() {
                         </div>
 
                         <button
-                              onClick={() => setIsComplete(!isComplete)}
-                              className={`mt-8 px-6 py-3 rounded-lg font-medium transition-colors ${
-                                    isComplete
+                              onClick={() => toggleComplete(chapter.slug)}
+                              className={`mt-8 px-6 py-3 rounded-lg font-medium transition-colors ${isComplete
                                           ? `bg-green-500 hover:bg-green-400 text-black`
                                           : `bg-echo-accent hover:bg-sky-300 text-black`
-                              }`}
+                                    }`}
                         >
                               {isComplete ? `✓ Completed` : 'Mark as complete'}
                         </button>
