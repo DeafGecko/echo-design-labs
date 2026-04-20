@@ -30,7 +30,7 @@ Echo Design Labs combines structured React and design tutorials with "Tiny Twerk
 - "Tiny Twerk" interview-prep projects with interactive code challenges
 - Tiered subscriptions (free, pro, studio)
 - Community showcase for user-submitted projects
-- A focus on accessibility — including features for the Deaf community, who are part of the core audience
+- A focus on accessibility 
 
 ## Getting Started
 
