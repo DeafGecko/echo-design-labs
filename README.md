@@ -48,3 +48,21 @@ npm run build
 Visit `http://localhost:5173` to see the app.
 
 ## Project Structure
+src/
+├── components/     Reusable UI components (Nav, etc.)
+├── pages/          Top-level route components
+├── data/           Typed content (tutorials, chapters)
+├── assets/         Images and static files
+└── styles/         Global styles
+
+## Philosophy
+
+Most tutorial platforms teach by making you type what you're told. Echo Design Labs is built on a different premise: the fastest way to learn is to build real things, hit real bugs, and fix them. Every chapter ends with a challenge — no exceptions.
+
+## About
+
+Built by [Dwight Rogers](https://github.com/DeafGecko) — freelance developer, founder of 09 Lab.
+
+---
+
+*Currently learning in public. Follow along or fork and build your own.*
